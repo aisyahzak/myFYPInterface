@@ -14,77 +14,58 @@ import Button from '../components/Button';
 import Label from '../components/Label';
 
 export default class Login extends Component {
-    render() {
-        return ( < ScrollView style = { styles.scroll } >
-            <Container >
-            <Button label = "Forgot Login/Pass"
-            styles = {
-                { button: styles.alignRight, label: styles.label }}
-            onPress = { this.press.bind(this) }/>   
-            </Container>
-            <Container>
-            <Label text = "Username or Email" />
-            <TextInput style = { styles.textInput }/>  
-            </Container> 
-            <Container>
-            <Label text = "Password" />
-            <TextInput secureTextEntry = { true }
-            style = { styles.textInput }/> 
-            </Container>
-            <Container>
-            <Button styles = {
-                { button: styles.transparentButton }
-            }
-            onPress = { this.press.bind(this) } >
-            <View style = { styles.inline } >
-            <Icon name = "facebook-official"
-            size = { 30 }
-            color = "#3B5699" />
-            <Text style = {
-                [styles.buttonBlueText, styles.buttonBigText]}>
-            Connect </Text>     
-            <Text style = { styles.buttonBlueText }> with Facebook 
-                </Text>    
-                </View>    
-                </Button>    
-                </Container>
 
-            <View style = { styles.footer } >
+    render() {
+        return (<ScrollView style={styles.scroll}>
             <Container>
-            <Button label = "Sign In"
-            styles = {
-                { button: styles.primaryButton, label: styles.buttonWhiteText }
-            }
-            onPress = { this.press.bind(this) }/>  
-            </Container> 
+                <Button
+                    label="Forgot Login/Pass"
+                    styles={{ button: styles.alignRight, label: styles.label }}
+                    onPress={this.press.bind(this)} />
+            </Container>
             <Container>
-            <Button label = "CANCEL"
-            styles = {
-                { label: styles.buttonBlackText }
-            }
-            onPress = { this.press.bind(this) }/>    
-            </Container>    
-            </View> 
-        ); 
-        <View style = { styles.footer } >
+                <Label text="Username or Email" />
+                <TextInput
+                    style={styles.textInput}
+                />
+            </Container>
             <Container>
-            <Button
-        label = "Sign In"
-        styles = {
-            { button: styles.primaryButton, label: styles.buttonWhiteText }
-        }
-        onPress = { this.press.bind(this) }/>  
-        </Container>  
-        <Container>
-            <Button
-        label = "CANCEL"
-        styles = {
-            { label: styles.buttonBlackText }
-        }
-        onPress = { this.press.bind(this) }/>  
-        </Container>  
-        </View>  
-        </ScrollView>); 
+                <Label text="Password" />
+                <TextInput
+                    secureTextEntry={true}
+                    style={styles.textInput}
+                />
+            </Container>
+            <Container>
+                <Button
+                    styles={{ button: styles.transparentButton }}
+                    onPress={this.press.bind(this)}
+                >
+                    <View style={styles.inline}>
+                        <Icon name="facebook-official" size={30} color="#3B5699" />
+                        <Text style={[styles.buttonBlueText, styles.buttonBigText]}>  Connect </Text>
+                        <Text style={styles.buttonBlueText}>with Facebook</Text>
+                    </View>
+                </Button>
+            </Container>
+            <View style={styles.footer}>
+                <Container>
+                    <Button
+                        label="Sign In"
+                        styles={{ button: styles.primaryButton, label: styles.buttonWhiteText }}
+                        onPress={this.press.bind(this)} />
+                </Container>
+                <Container>
+                    <Button
+                        label="CANCEL"
+                        styles={{ label: styles.buttonBlackText }}
+                        onPress={this.press.bind(this)} />
+                </Container>
+            </View>
+        </ScrollView>);
+    }
+    press(){
+        console.log('sads');
     }
 }
 const styles = StyleSheet.create({

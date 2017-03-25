@@ -16,8 +16,7 @@ import Login from './src/pages/Login';
 
 export default class myFYPInterface extends Component {
     render() {
-        return ( <
-            Login / >
+        return ( <Login/>
         );
     }
 }
