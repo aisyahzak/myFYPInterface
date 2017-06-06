@@ -12,11 +12,14 @@ import {
     View
 } from 'react-native';
 
+
 import Login from './src/pages/Login';
+import Search from './src/pages/Search';
+import ListBus from './src/pages/ListBus';
 
 export default class myFYPInterface extends Component {
     render() {
-        return ( <Login/>
+        return ( <Search/>
         );
     }
 }
