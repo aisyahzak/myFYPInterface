@@ -19,7 +19,7 @@ import ListBus from './src/pages/ListBus';
 
 export default class myFYPInterface extends Component {
     render() {
-        return ( <Search/>
+        return ( <ListBus/>
         );
     }
 }

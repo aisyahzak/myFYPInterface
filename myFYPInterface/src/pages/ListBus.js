@@ -12,7 +12,7 @@ class ListBus extends Component {
         
         
         <Grid>
-          <Row style={styles.col}>
+          <Row style={{height:50}}>
 
             <Col style={styles.col}>
               <Row style={styles.col}><Text>T305</Text></Row>
@@ -31,7 +31,7 @@ class ListBus extends Component {
 
           </Row>
 
-          <Row>
+          <Row style={{height:50}}>
             <Col>
               <Row><Text>T305</Text></Row>
             </Col>
