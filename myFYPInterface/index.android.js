@@ -16,10 +16,12 @@ import {
 import Login from './src/pages/Login';
 import Search from './src/pages/Search';
 import ListBus from './src/pages/ListBus';
+import ListByArea from './src/pages/ListByArea';
+import Info from './src/pages/Info';
 
 export default class myFYPInterface extends Component {
     render() {
-        return ( <ListBus/>
+        return ( <Info/>
         );
     }
 }

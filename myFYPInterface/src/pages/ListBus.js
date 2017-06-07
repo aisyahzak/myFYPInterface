@@ -12,7 +12,7 @@ class ListBus extends Component {
         
         
         <Grid>
-          <Row style={{height:50}}>
+          <Row style={{height:100}}>
 
             <Col style={styles.col}>
               <Row style={styles.col}><Text>T305</Text></Row>
@@ -31,7 +31,7 @@ class ListBus extends Component {
 
           </Row>
 
-          <Row style={{height:50}}>
+          <Row style={{height:100}}>
             <Col>
               <Row><Text>T305</Text></Row>
             </Col>
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#2c3e50',
   },
   col:{
-    height:50
+    height:75
   }
 });
 

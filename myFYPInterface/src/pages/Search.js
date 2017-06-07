@@ -10,13 +10,14 @@ class Search extends Component {
       <Container>
                 <Content>
                     <Form>
-                        <Item>
+                        <Item last>
                             <Input placeholder="From" />
                         </Item>
                         <Item last>
                             <Input placeholder="To" />
                         </Item>
-                        <Button style={{alignSelf:'flex-end'}}>
+
+                        <Button style={{alignSelf:'flex-end',marginTop:10}}>
                           <Text>Search</Text>
                         </Button>
                     </Form>
@@ -24,7 +25,7 @@ class Search extends Component {
                     <Text></Text>
                     
                     <Form>
-                      <Item>
+                      <Item last>
                         <Input placeholder="Search bus by Area"/>
                       </Item>
                     </Form>
@@ -32,7 +33,7 @@ class Search extends Component {
                     <Text></Text>
                     
                     <Form>
-                      <Item>
+                      <Item last>
                         <Input placeholder="Search bus by bus no"/>
                       </Item>
                     </Form>
