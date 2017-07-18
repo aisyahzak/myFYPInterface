@@ -11,6 +11,14 @@ import {
     Text,
     View
 } from 'react-native';
+import { StackNavigator } from 'react-navigation';
+const SimpleApp = StackNavigator({
+  Search:{ screen: Search },
+  Info:{ screen: Info },
+  ListByArea:{ screen: ListByArea },
+  ListBus:{ screen: ListBus },
+  Login: { screen: Login },
+});
 
 
 import Login from './src/pages/Login';
@@ -21,7 +29,7 @@ import Info from './src/pages/Info';
 
 export default class myFYPInterface extends Component {
     render() {
-        return ( <Info/>
+        return ( <SimpleApp/>
         );
     }
 }
