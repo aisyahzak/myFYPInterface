@@ -3,67 +3,73 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Container, Content, Form, Item, Input, Button,ListItem,List, Grid,Col,Row } from 'native-base';
 
+
+
 // create a component
 class ListBus extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      rows:<Text></Text>
+    }
+  }
+  componentWillMount() {
+    var rows1 = [];
+    var {state,navigate} = this.props.navigation
+    console.log('http://54.255.192.154:8000/searchBus/'+state.params.area);
+      fetch('http://54.255.192.154:8000/searchBus/'+state.params.area, {
+         method: 'GET'
+      })
+
+      .then((response) => response.json())
+      .then((responseJson) => {
+         console.log(responseJson);
+         {responseJson.map(function(object, i){
+           console.log(i);
+          rows1.push(
+            <Row style={{height:100}} key={i}>
+            <Col style={styles.col}>
+              <Row style={styles.col}>
+                <Button light onPress={()=>navigate('Info',{bus_no:object.bus_no})}><Text>{object.bus_no}</Text></Button>
+              </Row>
+            </Col>
+            <Col style={styles.col}>
+              <Row>
+              <Text>Start: {object.RouteStart}</Text>
+              </Row>
+              <Row>
+              <Text>End: {object.RouteEnd}</Text>
+              </Row>
+              <Row>
+              <Text>ETA {object.est} MIN</Text>
+              </Row>
+              <Row>
+              <Text>CURRENT: {object.bus_location}</Text>
+              </Row>
+            </Col>
+          </Row>
+          )
+        })
+        this.setState({rows:rows1})
+      }
+      })
+
+      .catch((error) => {
+         console.error(error);
+      });
+  }
+  static navigationOptions = {
+    title: 'List Bus',
+  };
+  
   render() {
+
     return (
-      
       <Container>
-        
-        
+
         <Grid>
-          <Row style={{height:100}}>
-
-            <Col style={styles.col}>
-              <Row style={styles.col}><Text>T305</Text></Row>
-            </Col>
-            <Col style={styles.col}>
-              <Row>
-              <Text>LRT SRI RAMPAI</Text>
-              </Row>
-              <Row>
-              <Text>ETA 25 MIN</Text>
-              </Row>
-              <Row>
-              <Text>CURRENT: AU1</Text>
-              </Row>
-            </Col>
-
-          </Row>
-
-          <Row style={{height:100}}>
-            <Col>
-              <Row><Text>T305</Text></Row>
-            </Col>
-            <Col style={styles.col}>
-              <Row>
-              <Text>LRT SRI RAMPAI</Text>
-              </Row>
-              <Row>
-              <Text>ETA 25 MIN</Text>
-              </Row>
-              <Row>
-              <Text>CURRENT: AU1</Text>
-              </Row>
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <Row><Text>T305</Text></Row>
-            </Col>
-            <Col style={styles.col}>
-              <Row>
-              <Text>LRT SRI RAMPAI</Text>
-              </Row>
-              <Row>
-              <Text>ETA 25 MIN</Text>
-              </Row>
-              <Row>
-              <Text>CURRENT: AU1</Text>
-              </Row>
-            </Col>
-          </Row>
-          
+        {this.state.rows}
         </Grid>
         
         
@@ -71,6 +77,7 @@ class ListBus extends Component {
       
     );
   }
+
 }
 
 // define your styles

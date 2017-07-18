@@ -5,6 +5,9 @@ import { Container, Content, Form, Item, Input, Button,ListItem,List, Grid,Col,R
 
 // create a component
 class ListByArea extends Component {
+  static navigationOptions = {
+    title: 'List Bus Area',
+  };
     constructor(props) {
         super(props);
         this.state = {

@@ -6,31 +6,57 @@ import { Container, Content, Form, Item, Input, Button,Grid,Col } from 'native-b
 
 // create a component
 class Info extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+             rows:<Text></Text>
+        }
+    }
+    
+    static navigationOptions = {
+    title: 'Info',
+  };
+  componentWillMount() {
+    var rows1 = [];
+    var {state,navigate} = this.props.navigation
+    console.log('http://54.255.192.154:8000/information/'+state.params.bus_no);
+      fetch('http://54.255.192.154:8000/information/'+state.params.bus_no, {
+         method: 'GET'
+      })
+
+      .then((response) => response.json())
+      .then((responseJson) => {
+         console.log('responseJsonkot',responseJson);
+         {responseJson.res.map(function(object, i){
+           console.log(i);
+          rows1.push(<View key={i}>
+            <Text>{object.current_Stop}</Text>
+            <Text>           |</Text>
+            <Text>           |  {object.bus_time} minutes</Text>
+            <Text>           |</Text>
+            <Text>          V</Text>
+            </View>
+          )
+        })
+        this.setState({rows:rows1})
+      }
+      })
+
+      .catch((error) => {
+         console.error(error);
+      });
+  }
     render() {
+        const { navigate,state } = this.props.navigation;
         return (
             <Container>
                 <Content>
                     <Grid>
                         <Col>
-                            <Text>T305</Text>
+                            <Text>{state.bus_no}</Text>
                         </Col>
                         <Col>
-                            <Text>Sri Rampai</Text>
-                            <Text>           |</Text>
-                            <Text>           |  5 minutes</Text>
-                            <Text>           |</Text>
-                            <Text>          V</Text>
-                            <Text>Wangsa Walk Mall</Text>  
-                            <Text>           |</Text>
-                            <Text>           |  3 minutes</Text>
-                            <Text>           |</Text>
-                            <Text>          V</Text> 
-                            <Text>AU 5</Text>
-                            <Text>           |</Text>
-                            <Text>           |  4 minutes</Text>
-                            <Text>           |</Text>
-                            <Text>          V</Text>
-                            <Text>Lembah Keramat</Text>                         
+                            {this.state.rows}
                         </Col>
                     </Grid>
                 </Content>
